@@ -1,0 +1,168 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//DC-714//Calendar//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:DC-714 Meetings
+X-WR-TIMEZONE:America/Los_Angeles
+BEGIN:VEVENT
+UID:dc714-1@dc714
+DTSTART:20250212T180000
+DTEND:20250212T200000
+SUMMARY:DC-714 Monthly Meeting
+LOCATION:Coastline Garden Grove Center\, Room 251 “Storm Center”\, 12901 S. Euclid St., Garden Grove, CA
+DESCRIPTION:Hacking • Learning • Community — DC-714 meets 6–8 PM. Join our Discord for updates: https://discord.com/channels/1241242117552996465/1241242117552996467
+END:VEVENT
+BEGIN:VEVENT
+UID:dc714-2@dc714
+DTSTART:20250312T180000
+DTEND:20250312T200000
+SUMMARY:DC-714 Monthly Meeting
+LOCATION:Coastline Garden Grove Center\, Room 251 “Storm Center”\, 12901 S. Euclid St., Garden Grove, CA
+DESCRIPTION:Hacking • Learning • Community — DC-714 meets 6–8 PM. Join our Discord for updates: https://discord.com/channels/1241242117552996465/1241242117552996467
+END:VEVENT
+BEGIN:VEVENT
+UID:dc714-3@dc714
+DTSTART:20250409T180000
+DTEND:20250409T200000
+SUMMARY:DC-714 Monthly Meeting
+LOCATION:Coastline Garden Grove Center\, Room 251 “Storm Center”\, 12901 S. Euclid St., Garden Grove, CA
+DESCRIPTION:Hacking • Learning • Community — DC-714 meets 6–8 PM. Join our Discord for updates: https://discord.com/channels/1241242117552996465/1241242117552996467
+END:VEVENT
+BEGIN:VEVENT
+UID:dc714-4@dc714
+DTSTART:20250514T180000
+DTEND:20250514T200000
+SUMMARY:DC-714 Monthly Meeting
+LOCATION:Coastline Garden Grove Center\, Room 251 “Storm Center”\, 12901 S. Euclid St., Garden Grove, CA
+DESCRIPTION:Hacking • Learning • Community — DC-714 meets 6–8 PM. Join our Discord for updates: https://discord.com/channels/1241242117552996465/1241242117552996467
+END:VEVENT
+BEGIN:VEVENT
+UID:dc714-5@dc714
+DTSTART:20250611T180000
+DTEND:20250611T200000
+SUMMARY:DC-714 Monthly Meeting
+LOCATION:Coastline Garden Grove Center\, Room 251 “Storm Center”\, 12901 S. Euclid St., Garden Grove, CA
+DESCRIPTION:Hacking • Learning • Community — DC-714 meets 6–8 PM. Join our Discord for updates: https://discord.com/channels/1241242117552996465/1241242117552996467
+END:VEVENT
+BEGIN:VEVENT
+UID:dc714-6@dc714
+DTSTART:20250709T180000
+DTEND:20250709T200000
+SUMMARY:DC-714 Monthly Meeting
+LOCATION:Coastline Garden Grove Center\, Room 251 “Storm Center”\, 12901 S. Euclid St., Garden Grove, CA
+DESCRIPTION:Hacking • Learning • Community — DC-714 meets 6–8 PM. Join our Discord for updates: https://discord.com/channels/1241242117552996465/1241242117552996467
+END:VEVENT
+BEGIN:VEVENT
+UID:dc714-7@dc714
+DTSTART:20250910T180000
+DTEND:20250910T200000
+SUMMARY:DC-714 Monthly Meeting
+LOCATION:Coastline Garden Grove Center\, Room 251 “Storm Center”\, 12901 S. Euclid St., Garden Grove, CA
+DESCRIPTION:Hacking • Learning • Community — DC-714 meets 6–8 PM. Join our Discord for updates: https://discord.com/channels/1241242117552996465/1241242117552996467
+END:VEVENT
+BEGIN:VEVENT
+UID:dc714-8@dc714
+DTSTART:20251008T180000
+DTEND:20251008T200000
+SUMMARY:DC-714 Monthly Meeting
+LOCATION:Coastline Garden Grove Center\, Room 251 “Storm Center”\, 12901 S. Euclid St., Garden Grove, CA
+DESCRIPTION:Hacking • Learning • Community — DC-714 meets 6–8 PM. Join our Discord for updates: https://discord.com/channels/1241242117552996465/1241242117552996467
+END:VEVENT
+BEGIN:VEVENT
+UID:dc714-9@dc714
+DTSTART:20251112T180000
+DTEND:20251112T200000
+SUMMARY:DC-714 Monthly Meeting
+LOCATION:Coastline Garden Grove Center\, Room 251 “Storm Center”\, 12901 S. Euclid St., Garden Grove, CA
+DESCRIPTION:Hacking • Learning • Community — DC-714 meets 6–8 PM. Join our Discord for updates: https://discord.com/channels/1241242117552996465/1241242117552996467
+END:VEVENT
+BEGIN:VEVENT
+UID:dc714-10@dc714
+DTSTART:20251210T180000
+DTEND:20251210T200000
+SUMMARY:DC-714 Monthly Meeting
+LOCATION:Coastline Garden Grove Center\, Room 251 “Storm Center”\, 12901 S. Euclid St., Garden Grove, CA
+DESCRIPTION:Hacking • Learning • Community — DC-714 meets 6–8 PM. Join our Discord for updates: https://discord.com/channels/1241242117552996465/1241242117552996467
+END:VEVENT
+BEGIN:VEVENT
+UID:dc714-11@dc714
+DTSTART:20260211T180000
+DTEND:20260211T200000
+SUMMARY:DC-714 Monthly Meeting
+LOCATION:Coastline Garden Grove Center\, Room 251 “Storm Center”\, 12901 S. Euclid St., Garden Grove, CA
+DESCRIPTION:Hacking • Learning • Community — DC-714 meets 6–8 PM. Join our Discord for updates: https://discord.com/channels/1241242117552996465/1241242117552996467
+END:VEVENT
+BEGIN:VEVENT
+UID:dc714-12@dc714
+DTSTART:20260311T180000
+DTEND:20260311T200000
+SUMMARY:DC-714 Monthly Meeting
+LOCATION:Coastline Garden Grove Center\, Room 251 “Storm Center”\, 12901 S. Euclid St., Garden Grove, CA
+DESCRIPTION:Hacking • Learning • Community — DC-714 meets 6–8 PM. Join our Discord for updates: https://discord.com/channels/1241242117552996465/1241242117552996467
+END:VEVENT
+BEGIN:VEVENT
+UID:dc714-13@dc714
+DTSTART:20260408T180000
+DTEND:20260408T200000
+SUMMARY:DC-714 Monthly Meeting
+LOCATION:Coastline Garden Grove Center\, Room 251 “Storm Center”\, 12901 S. Euclid St., Garden Grove, CA
+DESCRIPTION:Hacking • Learning • Community — DC-714 meets 6–8 PM. Join our Discord for updates: https://discord.com/channels/1241242117552996465/1241242117552996467
+END:VEVENT
+BEGIN:VEVENT
+UID:dc714-14@dc714
+DTSTART:20260513T180000
+DTEND:20260513T200000
+SUMMARY:DC-714 Monthly Meeting
+LOCATION:Coastline Garden Grove Center\, Room 251 “Storm Center”\, 12901 S. Euclid St., Garden Grove, CA
+DESCRIPTION:Hacking • Learning • Community — DC-714 meets 6–8 PM. Join our Discord for updates: https://discord.com/channels/1241242117552996465/1241242117552996467
+END:VEVENT
+BEGIN:VEVENT
+UID:dc714-15@dc714
+DTSTART:20260610T180000
+DTEND:20260610T200000
+SUMMARY:DC-714 Monthly Meeting
+LOCATION:Coastline Garden Grove Center\, Room 251 “Storm Center”\, 12901 S. Euclid St., Garden Grove, CA
+DESCRIPTION:Hacking • Learning • Community — DC-714 meets 6–8 PM. Join our Discord for updates: https://discord.com/channels/1241242117552996465/1241242117552996467
+END:VEVENT
+BEGIN:VEVENT
+UID:dc714-16@dc714
+DTSTART:20260708T180000
+DTEND:20260708T200000
+SUMMARY:DC-714 Monthly Meeting
+LOCATION:Coastline Garden Grove Center\, Room 251 “Storm Center”\, 12901 S. Euclid St., Garden Grove, CA
+DESCRIPTION:Hacking • Learning • Community — DC-714 meets 6–8 PM. Join our Discord for updates: https://discord.com/channels/1241242117552996465/1241242117552996467
+END:VEVENT
+BEGIN:VEVENT
+UID:dc714-17@dc714
+DTSTART:20260909T180000
+DTEND:20260909T200000
+SUMMARY:DC-714 Monthly Meeting
+LOCATION:Coastline Garden Grove Center\, Room 251 “Storm Center”\, 12901 S. Euclid St., Garden Grove, CA
+DESCRIPTION:Hacking • Learning • Community — DC-714 meets 6–8 PM. Join our Discord for updates: https://discord.com/channels/1241242117552996465/1241242117552996467
+END:VEVENT
+BEGIN:VEVENT
+UID:dc714-18@dc714
+DTSTART:20261014T180000
+DTEND:20261014T200000
+SUMMARY:DC-714 Monthly Meeting
+LOCATION:Coastline Garden Grove Center\, Room 251 “Storm Center”\, 12901 S. Euclid St., Garden Grove, CA
+DESCRIPTION:Hacking • Learning • Community — DC-714 meets 6–8 PM. Join our Discord for updates: https://discord.com/channels/1241242117552996465/1241242117552996467
+END:VEVENT
+BEGIN:VEVENT
+UID:dc714-19@dc714
+DTSTART:20261111T180000
+DTEND:20261111T200000
+SUMMARY:DC-714 Monthly Meeting
+LOCATION:Coastline Garden Grove Center\, Room 251 “Storm Center”\, 12901 S. Euclid St., Garden Grove, CA
+DESCRIPTION:Hacking • Learning • Community — DC-714 meets 6–8 PM. Join our Discord for updates: https://discord.com/channels/1241242117552996465/1241242117552996467
+END:VEVENT
+BEGIN:VEVENT
+UID:dc714-20@dc714
+DTSTART:20261209T180000
+DTEND:20261209T200000
+SUMMARY:DC-714 Monthly Meeting
+LOCATION:Coastline Garden Grove Center\, Room 251 “Storm Center”\, 12901 S. Euclid St., Garden Grove, CA
+DESCRIPTION:Hacking • Learning • Community — DC-714 meets 6–8 PM. Join our Discord for updates: https://discord.com/channels/1241242117552996465/1241242117552996467
+END:VEVENT
+END:VCALENDAR

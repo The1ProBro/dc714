@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DC-714 — Calendar</title>
+  <meta name="description" content="DC-714 monthly schedule (2nd Wednesday, except January & August). Meetings 6–8 PM, Coastline Garden Grove Center, Room 251.">
+  <link rel="stylesheet" href="assets/css/style.css" />
+  <link rel="icon" href="assets/img/logo.svg" type="image/svg+xml" />
+</head>
+<body>
+  <header class="header">
+    <div class="container nav">
+      <a class="brand" href="index.html">
+        <img src="assets/img/logo.svg" alt="DC-714" class="brand-logo" />
+        <span>DC-714</span>
+      </a>
+      <nav class="menu">
+        <a href="index.html">Home</a>
+        <a href="calendar.html">Calendar</a>
+        <a href="speakers.html">Speakers</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+        <a class="btn" href="https://discord.com/channels/1241242117552996465/1241242117552996467" target="_blank" rel="noopener">Discord</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="hero">
+      <div class="card">
+        <div class="kicker">Schedule</div>
+        <h1 class="glitch" data-text="DC-714 Calendar">DC-714 Calendar</h1>
+        <p>We meet on the <strong>2nd Wednesday</strong> of each month, except <strong>January</strong> and <strong>August</strong>. Time: <strong>6:00 PM – 8:00 PM</strong>.</p>
+
+        <!-- Month grid (no login required) -->
+        <div id="monthGrid" class="card" style="margin-top:12px;"></div>
+        <div style="margin:10px 0;">
+          <a class="btn" href="assets/misc/dc714_meetings.ics">Subscribe via iCal (.ics)</a>
+        </div>
+
+        <h3 style="margin-top:18px;">Generated Schedule (This & Next Year)</h3>
+        <table class="table">
+          <thead><tr><th>Date</th><th>Time</th><th>Room</th><th>Status</th></tr></thead>
+          <tbody id="calendarTableBody"></tbody>
+        </table>
+        <div class="small">Location: Coastline Garden Grove Center, 12901 S. Euclid St., Garden Grove, CA — Room 251 “Storm Center”.</div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer container">
+    <div>© <span id="year"></span> DC-714 • Zero-budget static site. Built with plain HTML/CSS/JS.</div>
+    <div class="small">Meetings: 2nd Wednesday monthly (except January & August), 6–8 PM, Room 251 “Storm Center”.</div>
+  </footer>
+
+  <!-- Load shared logic -->
+  <script src="assets/js/main.js"></script>
+  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+
+  <!-- Month grid builder (uses dc714Meetings from main.js) -->
+  <script>
+    (function(){
+      const container = document.getElementById('monthGrid');
+      if(!container) return;
+
+      const now = new Date();
+      const meetings = (() => {
+        const y0 = now.getFullYear(), y1 = y0 + 1;
+        return [...dc714Meetings(y0), ...dc714Meetings(y1)];
+      })();
+
+      function isMeeting(d){
+        return meetings.some(m => m.getFullYear()===d.getFullYear() &&
+                                  m.getMonth()===d.getMonth() &&
+                                  m.getDate()===d.getDate());
+      }
+      function monthName(m){
+        return new Date(2000, m, 1).toLocaleString(undefined,{month:'long'});
+      }
+
+      const gridWrap = document.createElement('div');
+      gridWrap.style.display = 'grid';
+      gridWrap.style.gridTemplateColumns = 'repeat(auto-fit, minmax(260px,1fr))';
+      gridWrap.style.gap = '16px';
+
+      for(let i=0;i<12;i++){
+        const d = new Date(now.getFullYear(), now.getMonth()+i, 1);
+        const y = d.getFullYear(), m = d.getMont

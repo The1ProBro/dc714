@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DC-714 — Speakers</title>
+  <meta name="description" content="DC-714 is a local DEFCON group meeting in Orange County, CA. Hacking • Learning • Community." />
+  <link rel="stylesheet" href="assets/css/style.css" />
+  <link rel="icon" href="assets/img/logo.svg" type="image/svg+xml" />
+</head>
+<body>
+  <header class="header">
+    <div class="container nav">
+      <a class="brand" href="index.html">
+        <img src="assets/img/logo.svg" alt="DC-714" class="brand-logo" />
+        <span>DC‑714</span>
+      </a>
+      <nav class="menu">
+        <a href="index.html">Home</a>
+        <a href="calendar.html">Calendar</a>
+        <a href="speakers.html">Speakers</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+        <a class="btn" href="https://discord.com/channels/1241242117552996465/1241242117552996467" target="_blank" rel="noopener">Discord</a>
+      </nav>
+    </div>
+  </header>
+  <main class="container">
+<section class="hero">
+  <div class="card">
+    <div class="kicker">Talks</div>
+    <h1 class="glitch" data-text="Speakers — Past / Present / Future">Speakers — Past / Present / Future</h1>
+    <p>Drop in to learn, present, or just hang out. To propose a talk, ping us on Discord.</p>
+
+    <div class="notice small">
+      Edit this page by duplicating a <span class="code">&lt;article class="speaker"&gt;</span> block. Set <span class="code">data-speaker-date="YYYY-MM-DD"</span> and the status tag updates automatically (Past / Upcoming / Today).
+    </div>
+
+    <div class="speakers" style="margin-top:14px;">
+      <!-- Example Speakers (change freely) -->
+      <article class="speaker" data-speaker-date="2025-09-10">
+        <div class="tag">Upcoming</div>
+        <h3>DEFCON Recap and LLM Web Aps</h3>
+        <div class="meta">ProBro. • Sep 10, 2025</div>
+        <p class="small">DEFCON Recap and using LLMs locally UPDATE! This will cover how to integrate NGINX for making interactive AI web applications.</p>
+      </article>
+
+      <article class="speaker" data-speaker-date="2025-10-08">
+        <div class="tag">Upcoming</div>
+        <h3>YOUR TALK HERE!!!</h3>
+        <div class="meta">TBD. • Oct 8, 2025</div>
+        <p class="Contact ProBro to submit a talk, get posted, and you will be added to our Speaker History! Great for building your creds!</p>
+      </article>
+
+      <article class="speaker" data-speaker-date="2025-05-14">
+        <div class="tag">Past</div>
+        <h3>Tools Used in Law Enforcement</h3>
+        <div class="meta">BlueScreenofWIN. • May 14, 2025</div>
+        <p class="small">TTPs used by Law Enforcement. Privacy and practice that are skirted by agencies along with some good stories about how they are used / abused Blue will also dive into how you can protect yourself (and others!)</p>
+      </article>
+    </div>
+  </div>
+</section>
+  </main>
+  <footer class="footer container">
+    <div>© <span id="year"></span> DC‑714 • Zero‑budget static site. Built with plain HTML/CSS/JS.</div>
+    <div class="small">Meetings: 2nd Wednesday monthly (except January & August), 6–8 PM, Room 251 “Storm Center”.</div>
+  </footer>
+  <script src="assets/js/main.js"></script>
+  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+</body>
+</html>

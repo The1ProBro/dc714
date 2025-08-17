@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DC-714 — Home</title>
+  <meta name="description" content="DC-714 is a local DEFCON group meeting in Orange County, CA. Hacking • Learning • Community." />
+  <link rel="stylesheet" href="assets/css/style.css" />
+  <link rel="icon" href="assets/img/logo.svg" type="image/svg+xml" />
+</head>
+<body>
+  <header class="header">
+    <div class="container nav">
+      <a class="brand" href="index.html">
+        <img src="assets/img/logo.svg" alt="DC-714" class="brand-logo" />
+        <span>DC‑714</span>
+      </a>
+      <nav class="menu">
+        <a href="index.html">Home</a>
+        <a href="calendar.html">Calendar</a>
+        <a href="speakers.html">Speakers</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+        <a class="btn" href="https://discord.com/channels/1241242117552996465/1241242117552996467" target="_blank" rel="noopener">Discord</a>
+      </nav>
+    </div>
+  </header>
+  <main class="container">
+<section class="hero">
+  <div class="card">
+    <div class="kicker">Local DEFCON Group</div>
+    <h1 class="glitch" data-text="DC‑714 — Hacking • Learning • Community">DC‑714 — Hacking • Learning • Community</h1>
+    <p>We meet at <strong>Coastline Garden Grove Center</strong>, 12901 S. Euclid St., Garden Grove, CA —
+       <strong>Room 251 “Storm Center”</strong>. Sessions are practical, chill, and beginner‑friendly.</p>
+    <div id="nextMeeting" class="card" style="margin-top:14px;"></div>
+  </div>
+</section>
+
+<section class="grid" style="margin-top: 10px;">
+  <article class="card">
+    <h3>Calendar</h3>
+    <p class="small">Tap below for full schedule, or see the next meeting above.</p>
+    <a class="btn" href="calendar.html">Open Calendar</a>
+  </article>
+
+  <article class="card">
+    <h3>Speakers</h3>
+    <p class="small">Browse past, present, and future talks. Submit a proposal and share something cool.</p>
+    <a class="btn" href="speakers.html">View Speakers</a>
+  </article>
+
+  <article class="card">
+    <h3>Location</h3>
+    <p class="small">Coastline Garden Grove Center • Room 251 “Storm Center”. Parking is on-site.</p>
+    <div class="notice small">Map is an OpenStreetMap embed — no API keys or fees.</div>
+    <iframe class="map-embed"
+      src="https://www.openstreetmap.org/export/embed.html?bbox=-117.947%2C33.775%2C-117.935%2C33.784&layer=mapnik&marker=33.7795%2C-117.941"
+      style="margin-top:10px;"
+      title="Map to Coastline Garden Grove Center"></iframe>
+    <div style="margin-top:10px"><a class="btn ghost" href="https://www.openstreetmap.org/?mlat=33.7795&mlon=-117.941#map=16/33.7795/-117.941" target="_blank" rel="noopener">Open Full Map</a></div>
+  </article>
+</section>
+  </main>
+  <footer class="footer container">
+    <div>© <span id="year"></span> DC‑714 • Zero‑budget static site. Built with plain HTML/CSS/JS.</div>
+    <div class="small">Meetings: 2nd Wednesday monthly (except January & August), 6–8 PM, Room 251 “Storm Center”.</div>
+  </footer>
+  <script src="assets/js/main.js"></script>
+  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+</body>
+</html>
