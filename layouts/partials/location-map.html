@@ -1,10 +1,9 @@
-{{/* Reusable OpenStreetMap embed built from site.Params.location (no API keys). */}}
+{{/* Reusable OpenStreetMap embed built from site.Params.location (no API keys).
+     The URL uses literal commas and safeURL so html/template doesn't re-encode
+     them (pre-encoding %2C gets double-encoded to %252C, breaking the bbox). */}}
 {{ $loc := site.Params.location }}
-{{ $bbox := replace $loc.osmBbox "," "%2C" }}
-{{ $marker := replace $loc.osmMarker "," "%2C" }}
-<iframe class="map-embed"
-  src="https://www.openstreetmap.org/export/embed.html?bbox={{ $bbox }}&layer=mapnik&marker={{ $marker }}"
-  title="Map to {{ $loc.name }}"></iframe>
+{{ $src := printf "https://www.openstreetmap.org/export/embed.html?bbox=%s&layer=mapnik&marker=%s" $loc.osmBbox $loc.osmMarker }}
+<iframe class="map-embed" src="{{ $src | safeURL }}" title="Map to {{ $loc.name }}"></iframe>
 <div style="margin-top:10px">
   <a class="btn ghost" href="https://www.openstreetmap.org/?mlat={{ $loc.lat }}&mlon={{ $loc.lon }}#map=16/{{ $loc.lat }}/{{ $loc.lon }}" target="_blank" rel="noopener">Open Full Map</a>
 </div>
