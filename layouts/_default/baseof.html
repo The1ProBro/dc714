@@ -2,6 +2,13 @@
 <html lang="en">
 <head>
   {{ partial "head.html" . }}
+  {{ if getenv "DISCORD_INVITE" }}
+  {{/* When JS is off, the obscured Discord links can't be decoded — flag that. */}}
+  <noscript><style>
+    a[data-discord]{opacity:.55;pointer-events:none;}
+    a[data-discord]::after{content:" (enable JS)";font-weight:400;}
+  </style></noscript>
+  {{ end }}
 </head>
 <body>
   {{ partial "nav.html" . }}
