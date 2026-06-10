@@ -8,3 +8,5 @@
 {{ with resources.Get "img/logo.svg" }}
 <link rel="icon" href="{{ .RelPermalink }}" type="image/svg+xml" />
 {{ end }}
+<link rel="alternate" type="application/rss+xml" title="DC-714 Talks" href="{{ "talks/index.xml" | relURL }}" />
+

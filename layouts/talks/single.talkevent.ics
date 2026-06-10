@@ -1,0 +1,20 @@
+{{- $loc := replace (printf "%s, %s, %s" site.Params.location.name site.Params.location.room site.Params.location.address) "," "\\," -}}
+{{- $d := .Date -}}
+{{- $summary := replace (printf "%s%s" .Title (cond (ne (.Params.speaker | default "") "") (printf " — %s" .Params.speaker) "")) "," "\\," -}}
+{{- $desc := replace (.Summary | plainify | chomp) "," "\\," -}}
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//DC-714//Calendar//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+BEGIN:VEVENT
+UID:dc714-talk-{{ $d.Format "20060102" }}@dc714.net
+DTSTAMP:{{ now.Format "20060102T150405Z" }}
+DTSTART:{{ $d.Format "20060102" }}T180000
+DTEND:{{ $d.Format "20060102" }}T200000
+SUMMARY:{{ $summary }}
+LOCATION:{{ $loc }}
+DESCRIPTION:{{ $desc }}
+URL:{{ .Permalink }}
+END:VEVENT
+END:VCALENDAR
