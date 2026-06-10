@@ -10,9 +10,7 @@
       <a href="{{ "/talks/" | relURL }}">Talks</a>
       <a href="{{ "/about/" | relURL }}">About</a>
       <a href="{{ "/contact/" | relURL }}">Contact</a>
-      {{/* TODO (separate commit): replace with the obscured discord-link partial.
-           Until then the button routes to the contact page rather than exposing an invite. */}}
-      <a class="btn" href="{{ "/contact/" | relURL }}">Discord</a>
+      {{ partial "discord-link.html" (dict "class" "btn" "label" "Discord" "fallbackURL" "/contact/") }}
     </nav>
   </div>
 </header>

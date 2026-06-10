@@ -46,3 +46,8 @@ buildFuture = true
 
 [outputs]
   home = ["HTML", "RSS", "ICAL"]
+
+# Allow the discord-link partial to read the DISCORD_INVITE env var via getenv
+# (Hugo otherwise only permits HUGO_*/CI). The invite is never committed.
+[security.funcs]
+  getenv = ['^HUGO_', '^CI$', '^DISCORD_INVITE$']

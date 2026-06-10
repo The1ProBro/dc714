@@ -9,5 +9,17 @@
     {{ block "main" . }}{{ end }}
   </main>
   {{ partial "footer.html" . }}
+  {{ if getenv "DISCORD_INVITE" }}
+  <script>
+    /* The site's only JavaScript: decode the base64-obscured Discord invite at
+       runtime so the raw link never appears in the static HTML (anti-scraper).
+       Emitted only when DISCORD_INVITE is configured at build time. */
+    (function () {
+      document.querySelectorAll('a[data-discord]').forEach(function (a) {
+        try { a.href = atob(a.getAttribute('data-discord')); } catch (e) {}
+      });
+    })();
+  </script>
+  {{ end }}
 </body>
 </html>

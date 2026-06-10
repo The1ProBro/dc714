@@ -8,8 +8,7 @@
       <div class="card">
         <h3>Discord</h3>
         <p class="small">Fastest way to reach the crew and propose a talk.</p>
-        {{/* TODO (separate commit): replace with the obscured discord-link partial. */}}
-        <a class="btn" href="#">Join Discord</a>
+        {{ partial "discord-link.html" (dict "class" "btn" "label" "Join Discord") }}
       </div>
       <div class="card">
         <h3>Email</h3>
