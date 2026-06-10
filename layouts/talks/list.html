@@ -1,39 +1,43 @@
 {{ define "main" }}
+{{ $today := now.Format "2006-01-02" }}
+{{ $upcoming := slice }}
+{{ $past := slice }}
+{{ range .RegularPages }}
+  {{ if ge (.Date.Format "2006-01-02") $today }}
+    {{ $upcoming = $upcoming | append . }}
+  {{ else }}
+    {{ $past = $past | append . }}
+  {{ end }}
+{{ end }}
+
 <section class="hero">
   <div class="card">
     <div class="kicker">Talks</div>
     <h1 class="glitch" data-text="Talks — Past / Present / Future">Talks — Past / Present / Future</h1>
     <p>Drop in to learn, present, or just hang out. To propose a talk, ping us on Discord.</p>
-
-    {{ $today := now.Format "2006-01-02" }}
-    {{ $upcoming := slice }}
-    {{ $past := slice }}
-    {{ range .RegularPages }}
-      {{ if ge (.Date.Format "2006-01-02") $today }}
-        {{ $upcoming = $upcoming | append . }}
-      {{ else }}
-        {{ $past = $past | append . }}
-      {{ end }}
-    {{ end }}
-
-    <h3 style="margin-top:16px;">Upcoming</h3>
-    {{ with $upcoming }}
-      <div class="speakers">
-        {{ range sort . "Date" "asc" }}{{ partial "speaker-card.html" . }}{{ end }}
-      </div>
-    {{ else }}
-      <div class="notice small">
-        No talks booked yet — <strong>your talk here!</strong> Contact us on Discord to grab a
-        slot, get posted, and join our speaker history. Great for building your creds.
-      </div>
-    {{ end }}
-
-    {{ with $past }}
-      <h3 style="margin-top:20px;">Past</h3>
-      <div class="speakers">
-        {{ range sort . "Date" "desc" }}{{ partial "speaker-card.html" . }}{{ end }}
-      </div>
-    {{ end }}
   </div>
 </section>
+
+<section style="margin-top:10px;">
+  <h3>Upcoming</h3>
+  {{ with $upcoming }}
+    <div class="speakers">
+      {{ range sort . "Date" "asc" }}{{ partial "speaker-card.html" . }}{{ end }}
+    </div>
+  {{ else }}
+    <div class="notice small">
+      No talks booked yet — <strong>your talk here!</strong> Contact us on Discord to grab a
+      slot, get posted, and join our speaker history. Great for building your creds.
+    </div>
+  {{ end }}
+</section>
+
+{{ with $past }}
+<section style="margin-top:18px;">
+  <h3>Past</h3>
+  <div class="speakers">
+    {{ range sort . "Date" "desc" }}{{ partial "speaker-card.html" . }}{{ end }}
+  </div>
+</section>
+{{ end }}
 {{ end }}
