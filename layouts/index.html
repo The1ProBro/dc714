@@ -1,0 +1,32 @@
+{{ define "main" }}
+<section class="hero">
+  <div class="card">
+    <div class="kicker">Local DEFCON Group</div>
+    <h1 class="glitch" data-text="DC-714 — Hacking • Learning • Community">DC-714 — Hacking • Learning • Community</h1>
+    <p>We meet at <strong>{{ site.Params.location.name }}</strong>, {{ site.Params.location.address }} —
+       <strong>{{ site.Params.location.room }}</strong>. Sessions are practical, chill, and beginner-friendly.</p>
+    {{ partial "next-meeting.html" . }}
+  </div>
+</section>
+
+<section class="grid" style="margin-top: 10px;">
+  <article class="card">
+    <h3>Calendar</h3>
+    <p class="small">Tap below for full schedule, or see the next meeting above.</p>
+    <a class="btn" href="{{ "calendar/" | relURL }}">Open Calendar</a>
+  </article>
+
+  <article class="card">
+    <h3>Talks</h3>
+    <p class="small">Browse past, present, and future talks. Submit a proposal and share something cool.</p>
+    <a class="btn" href="{{ "talks/" | relURL }}">View Talks</a>
+  </article>
+
+  <article class="card">
+    <h3>Location</h3>
+    <p class="small">{{ site.Params.location.name }} • {{ site.Params.location.room }}. Parking is on-site.</p>
+    <div class="notice small">Map is an OpenStreetMap embed — no API keys or fees.</div>
+    {{ partial "location-map.html" . }}
+  </article>
+</section>
+{{ end }}

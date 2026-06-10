@@ -1,0 +1,16 @@
+{{ define "main" }}
+<section class="hero">
+  <div class="card">
+    <div class="kicker">About</div>
+    <h1 class="glitch" data-text="About DC-714">About DC-714</h1>
+    <p>DC-714 is a community-run local DEFCON group in Orange County, CA. We meet monthly for lightning talks, demos, workshops, and casual hallwaycon. All skill levels welcome.</p>
+    <ul class="small">
+      <li><strong>When:</strong> 2nd Wednesday (except Jan &amp; Aug), {{ site.Params.startTime }} – {{ site.Params.endTime }}</li>
+      <li><strong>Where:</strong> {{ site.Params.location.name }} — {{ site.Params.location.address }} — {{ site.Params.location.room }}</li>
+      <li><strong>Why:</strong> Learn, share, and build the local hacker community</li>
+      <li><strong>Cost:</strong> Free. Zero budget, zero excuses.</li>
+    </ul>
+    <p class="small">This site is static (no backend, no trackers, no fees) and works on GitHub Pages or any basic web host.</p>
+  </div>
+</section>
+{{ end }}
