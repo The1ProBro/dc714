@@ -1,0 +1,23 @@
+{{ define "main" }}
+{{ $status := partial "status.html" . }}
+<section class="hero">
+  <div class="card">
+    <div class="kicker">Talk</div>
+    <h1 class="glitch" data-text="{{ .Title }}">{{ .Title }}</h1>
+    <div class="meta small">
+      <span class="tag">{{ $status }}</span>
+      {{ with .Params.speaker }}{{ . }} • {{ end }}{{ .Date.Format "Mon, January 2, 2006" }}
+    </div>
+
+    <div style="margin-top:14px;">
+      {{ .Content }}
+    </div>
+
+    {{ with .Params.slides }}<p><a class="btn ghost" href="{{ . }}" target="_blank" rel="noopener">Slides</a></p>{{ end }}
+    {{ with .Params.video }}<p><a class="btn ghost" href="{{ . }}" target="_blank" rel="noopener">Video</a></p>{{ end }}
+    {{ with .Params.repo }}<p><a class="btn ghost" href="{{ . }}" target="_blank" rel="noopener">Repo</a></p>{{ end }}
+
+    <p style="margin-top:16px;"><a class="btn ghost" href="{{ "/talks/" | relURL }}">← All talks</a></p>
+  </div>
+</section>
+{{ end }}

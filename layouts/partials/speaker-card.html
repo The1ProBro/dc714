@@ -1,0 +1,8 @@
+{{- /* Renders one talk card. Context is a talk page. */ -}}
+{{ $status := partial "status.html" . }}
+<article class="speaker">
+  <div class="tag">{{ $status }}</div>
+  <h3><a href="{{ .RelPermalink }}">{{ .Title }}</a></h3>
+  <div class="meta">{{ with .Params.speaker }}{{ . }} • {{ end }}{{ .Date.Format "Jan 2, 2006" }}</div>
+  <p class="small">{{ .Summary | plainify | strings.TrimSpace }}</p>
+</article>
