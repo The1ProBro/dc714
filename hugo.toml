@@ -3,6 +3,10 @@ languageCode = "en-us"
 title = "DC-714"
 enableRobotsTXT = true
 
+# We don't use tags/categories; disabling them removes the empty
+# /tags/ and /categories/ pages and their stray RSS feeds.
+disableKinds = ["taxonomy", "term"]
+
 # Show talks dated in the future (upcoming announcements) rather than hiding
 # them until their date. Combined with the daily CI rebuild, a talk added now
 # appears as "Upcoming" and flips to "Past" after its date with no manual edit.
@@ -44,6 +48,11 @@ buildFuture = true
 [outputFormats.ICAL]
   mediaType = "text/calendar"
   baseName = "meetings"
+  isPlainText = true
+
+# Per-talk single-event calendar file (default baseName -> /talks/<slug>/index.ics).
+[outputFormats.TALKEVENT]
+  mediaType = "text/calendar"
   isPlainText = true
 
 [outputs]
