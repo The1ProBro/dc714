@@ -17,7 +17,7 @@
     {{ with .Params.video }}<p><a class="btn ghost" href="{{ . }}" target="_blank" rel="noopener">Video</a></p>{{ end }}
     {{ with .Params.repo }}<p><a class="btn ghost" href="{{ . }}" target="_blank" rel="noopener">Repo</a></p>{{ end }}
 
-    <p style="margin-top:16px;"><a class="btn ghost" href="{{ "/talks/" | relURL }}">← All talks</a></p>
+    <p style="margin-top:16px;"><a class="btn ghost" href="{{ "talks/" | relURL }}">← All talks</a></p>
   </div>
 </section>
 {{ end }}

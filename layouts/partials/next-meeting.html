@@ -17,15 +17,15 @@
     <div class="small">{{ site.Params.startTime }} – {{ site.Params.endTime }} • {{ $room }}</div>
     <div class="small">{{ site.Params.location.name }} — {{ site.Params.location.address }}</div>
     <div style="margin-top:10px;">
-      <a class="btn" href="{{ "/calendar/" | relURL }}">View Full Calendar</a>
-      {{ partial "discord-link.html" (dict "class" "btn ghost" "label" "Discord" "fallbackURL" "/contact/") }}
+      <a class="btn" href="{{ "calendar/" | relURL }}">View Full Calendar</a>
+      {{ partial "discord-link.html" (dict "class" "btn ghost" "label" "Discord" "fallbackURL" "contact/") }}
     </div>
   {{ else }}
     {{/* Graceful fallback when the schedule data runs dry. */}}
     <h3 style="margin:.4rem 0 0;">TBD</h3>
     <div class="small">Next meeting not posted yet — check the calendar or ask on Discord.</div>
     <div style="margin-top:10px;">
-      <a class="btn" href="{{ "/calendar/" | relURL }}">View Full Calendar</a>
+      <a class="btn" href="{{ "calendar/" | relURL }}">View Full Calendar</a>
     </div>
   {{ end }}
 </div>

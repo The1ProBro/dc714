@@ -50,10 +50,17 @@ jobs:
       - name: Setup Pages
         id: pages
         uses: actions/configure-pages@v5
+        with:
+          enablement: true
       - name: Build with Hugo
         env:
           HUGO_ENVIRONMENT: production
-        run: hugo --gc --minify
+        # baseURL comes from the Pages config so this works both on the upstream
+        # custom domain (dc714.net) and on a fork's project page (*.github.io/<repo>).
+        run: hugo --gc --minify --baseURL "${{ steps.pages.outputs.base_url }}/"
+      - name: Drop custom domain on forks (preview at *.github.io)
+        if: github.repository != 'The1ProBro/dc714'
+        run: rm -f public/CNAME
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
