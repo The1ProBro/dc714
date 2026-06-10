@@ -1,0 +1,27 @@
+{{ define "main" }}
+<section class="hero">
+  <div class="card">
+    <div class="kicker">Contact</div>
+    <h1 class="glitch" data-text="Contact DC‑714">Contact DC‑714</h1>
+
+    <div class="grid">
+      <div class="card">
+        <h3>Discord</h3>
+        <p class="small">Fastest way to reach the crew and propose a talk.</p>
+        {{/* TODO (separate commit): replace with the obscured discord-link partial. */}}
+        <a class="btn" href="#">Join Discord</a>
+      </div>
+      <div class="card">
+        <h3>Email</h3>
+        <p class="small">Reach the organizers directly.</p>
+        <a class="btn ghost" href="mailto:{{ site.Params.email }}">{{ site.Params.email }}</a>
+      </div>
+      <div class="card">
+        <h3>Meeting Location</h3>
+        <p class="small">{{ site.Params.location.name }} — {{ site.Params.location.room }}.</p>
+        {{ partial "location-map.html" . }}
+      </div>
+    </div>
+  </div>
+</section>
+{{ end }}
