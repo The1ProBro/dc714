@@ -1,0 +1,17 @@
+{{- /* Build-time replacement for populateCalendarTable().
+       Rows come from data/meetings.yaml, current year onward. */ -}}
+{{ $today := now.Format "2006-01-02" }}
+{{ $year := now.Year }}
+{{ range site.Data.meetings }}
+  {{ $d := time.AsTime .date }}
+  {{ if ge $d.Year $year }}
+    {{ $ds := $d.Format "2006-01-02" }}
+    {{ $status := cond (lt $ds $today) "Past" (cond (eq $ds $today) "Today" "Upcoming") }}
+    <tr>
+      <td>{{ $d.Format "Mon, January 2, 2006" }}</td>
+      <td>{{ site.Params.startTime }} – {{ site.Params.endTime }}</td>
+      <td>{{ .room | default site.Params.location.room }}</td>
+      <td>{{ $status }}</td>
+    </tr>
+  {{ end }}
+{{ end }}
