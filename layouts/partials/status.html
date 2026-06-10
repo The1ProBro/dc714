@@ -1,0 +1,5 @@
+{{- /* Returns "Past" | "Today" | "Upcoming" for a page based on its .Date.
+       Build-time replacement for the old hydrateSpeakers()/speakerStatus() JS. */ -}}
+{{- $today := now.Format "2006-01-02" -}}
+{{- $ds := .Date.Format "2006-01-02" -}}
+{{- return (cond (lt $ds $today) "Past" (cond (eq $ds $today) "Today" "Upcoming")) -}}

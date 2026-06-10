@@ -1,0 +1,14 @@
+{{ define "main" }}
+<section class="hero">
+  <div class="card">
+    <div class="kicker">404</div>
+    <h1 class="glitch" data-text="Page not found">Page not found</h1>
+    <p>That page doesn't exist. Try one of these instead:</p>
+    <p>
+      <a class="btn" href="{{ "" | relURL }}">Home</a>
+      <a class="btn ghost" href="{{ "calendar/" | relURL }}">Calendar</a>
+      <a class="btn ghost" href="{{ "talks/" | relURL }}">Talks</a>
+    </p>
+  </div>
+</section>
+{{ end }}

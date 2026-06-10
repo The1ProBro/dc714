@@ -1,0 +1,21 @@
+{{- $loc := replace (printf "%s, %s, %s" site.Params.location.name site.Params.location.room site.Params.location.address) "," "\\," -}}
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//DC-714//Calendar//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:DC-714 Meetings
+X-WR-TIMEZONE:America/Los_Angeles
+{{ range site.Data.meetings -}}
+{{ $d := time.AsTime .date -}}
+BEGIN:VEVENT
+UID:dc714-{{ $d.Format "20060102" }}@dc714.net
+DTSTAMP:{{ now.Format "20060102T150405Z" }}
+DTSTART:{{ $d.Format "20060102" }}T180000
+DTEND:{{ $d.Format "20060102" }}T200000
+SUMMARY:DC-714 Monthly Meeting
+LOCATION:{{ $loc }}
+DESCRIPTION:Hacking - Learning - Community. DC-714 meets 6-8 PM.
+END:VEVENT
+{{ end -}}
+END:VCALENDAR

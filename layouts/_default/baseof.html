@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  {{ partial "head.html" . }}
+  {{ if getenv "DISCORD_INVITE" }}
+  {{/* When JS is off, the obscured Discord links can't be decoded — flag that. */}}
+  <noscript><style>
+    a[data-discord]{opacity:.55;pointer-events:none;}
+    a[data-discord]::after{content:" (enable JS)";font-weight:400;}
+  </style></noscript>
+  {{ end }}
+</head>
+<body>
+  {{ partial "nav.html" . }}
+  <main class="container">
+    {{ block "main" . }}{{ end }}
+  </main>
+  {{ partial "footer.html" . }}
+  {{ if getenv "DISCORD_INVITE" }}
+  <script>
+    /* The site's only JavaScript: decode the base64-obscured Discord invite at
+       runtime so the raw link never appears in the static HTML (anti-scraper).
+       Emitted only when DISCORD_INVITE is configured at build time. */
+    (function () {
+      document.querySelectorAll('a[data-discord]').forEach(function (a) {
+        try { a.href = atob(a.getAttribute('data-discord')); } catch (e) {}
+      });
+    })();
+  </script>
+  {{ end }}
+</body>
+</html>

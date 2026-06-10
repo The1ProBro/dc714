@@ -1,0 +1,15 @@
+<header class="header">
+  <div class="container nav">
+    <a class="brand" href="{{ "" | relURL }}">
+      {{ with resources.Get "img/logo.svg" }}<img src="{{ .RelPermalink }}" alt="DC-714" class="brand-logo" />{{ end }}
+      <span>DC-714</span>
+    </a>
+    <nav class="menu">
+      <a href="{{ "" | relURL }}">Home</a>
+      <a href="{{ "calendar/" | relURL }}">Calendar</a>
+      <a href="{{ "talks/" | relURL }}">Talks</a>
+      <a href="{{ "about/" | relURL }}">About</a>
+      <a href="{{ "contact/" | relURL }}">Contact</a>
+    </nav>
+  </div>
+</header>

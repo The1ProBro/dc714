@@ -1,0 +1,64 @@
+baseURL = "https://dc714.net/"
+languageCode = "en-us"
+title = "DC-714"
+enableRobotsTXT = true
+
+# We don't use tags/categories; disabling them removes the empty
+# /tags/ and /categories/ pages and their stray RSS feeds.
+disableKinds = ["taxonomy", "term"]
+
+# Show talks dated in the future (upcoming announcements) rather than hiding
+# them until their date. Combined with the daily CI rebuild, a talk added now
+# appears as "Upcoming" and flips to "Past" after its date with no manual edit.
+buildFuture = true
+
+[permalinks]
+  talks = "/talks/:slug/"
+
+[params]
+  description = "DC-714 is a local DEFCON group meeting in Orange County, CA. Hacking • Learning • Community."
+
+  # Contact
+  # TODO (separate commit): Discord invite is intentionally absent — it will be
+  # injected at build time from env (DISCORD_INVITE) and obscured client-side,
+  # since this repo is public. See "Obscure Discord invite" in the plan.
+  email = "organizer@example.com"   # TODO: replace placeholder with real address
+
+  # Meeting cadence
+  meetingBlurb = "2nd Wednesday monthly (except January & August), 6–8 PM, Room 251 “Storm Center”."
+  startTime = "6:00 PM"
+  endTime = "8:00 PM"
+
+  # Meeting location — single source of truth (used by hero, contact, calendar, map, .ics)
+  [params.location]
+    name = "Coastline Garden Grove Center"
+    address = "12901 S. Euclid St., Garden Grove, CA"
+    room = "Room 251 “Storm Center”"
+    # Derived from OSM way 160439384 (the venue building): center of its
+    # footprint, with the bbox padded ~350m for surrounding context.
+    lat = "33.775464"
+    lon = "-117.938423"
+    osmBbox = "-117.940423,33.773964,-117.936423,33.776964"
+    osmMarker = "33.775464,-117.938423"
+
+# Generated iCal feed (/meetings.ics) from data/meetings.yaml.
+[mediaTypes."text/calendar"]
+  suffixes = ["ics"]
+
+[outputFormats.ICAL]
+  mediaType = "text/calendar"
+  baseName = "meetings"
+  isPlainText = true
+
+# Per-talk single-event calendar file (default baseName -> /talks/<slug>/index.ics).
+[outputFormats.TALKEVENT]
+  mediaType = "text/calendar"
+  isPlainText = true
+
+[outputs]
+  home = ["HTML", "RSS", "ICAL"]
+
+# Allow the discord-link partial to read the DISCORD_INVITE env var via getenv
+# (Hugo otherwise only permits HUGO_*/CI). The invite is never committed.
+[security.funcs]
+  getenv = ['^HUGO_', '^CI$', '^DISCORD_INVITE$']

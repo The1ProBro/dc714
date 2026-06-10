@@ -1,0 +1,34 @@
+{{- /* Build-time replacement for the inline month-grid JS in calendar.html.
+       Renders the next 12 months, highlighting meeting days (from
+       data/meetings.yaml) and today. No JavaScript. */ -}}
+{{ $now := now }}
+{{ $today := $now.Format "2006-01-02" }}
+{{ $meetingDays := slice }}
+{{ range site.Data.meetings }}
+  {{ $meetingDays = $meetingDays | append ((time.AsTime .date).Format "2006-01-02") }}
+{{ end }}
+{{ $base := time.AsTime (printf "%04d-%02d-01" $now.Year $now.Month) }}
+{{ $months := 4 }}
+
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px;">
+{{ range $i := seq 0 (sub $months 1) }}
+  {{ $first := $base.AddDate 0 $i 0 }}
+  {{ $lead := int (printf "%d" $first.Weekday) }}
+  {{ $ndays := (($first.AddDate 0 1 0).AddDate 0 0 -1).Day }}
+  <div class="card">
+    <h4 style="margin:0 0 8px;">{{ $first.Format "January 2006" }}</h4>
+    <div style="display:grid;grid-template-columns:repeat(7,1fr);gap:4px;text-align:center;font-size:.8rem;">
+      {{ range (slice "S" "M" "T" "W" "T" "F" "S") }}<div class="small">{{ . }}</div>{{ end }}
+      {{ if gt $lead 0 }}{{ range seq 1 $lead }}<div></div>{{ end }}{{ end }}
+      {{ range $day := seq 1 $ndays }}
+        {{ $ds := printf "%04d-%02d-%02d" $first.Year $first.Month $day }}
+        {{ $isMeeting := in $meetingDays $ds }}
+        {{ $cell := "padding:4px 0;border-radius:6px;" }}
+        {{ if $isMeeting }}{{ $cell = printf "%sbackground:rgba(0,255,200,0.18);color:var(--accent);font-weight:800;" $cell }}{{ end }}
+        {{ if eq $ds $today }}{{ $cell = printf "%soutline:1px solid var(--accent-2);" $cell }}{{ end }}
+        <div style="{{ $cell | safeCSS }}"{{ if $isMeeting }} title="DC-714 Meeting"{{ end }}>{{ $day }}</div>
+      {{ end }}
+    </div>
+  </div>
+{{ end }}
+</div>

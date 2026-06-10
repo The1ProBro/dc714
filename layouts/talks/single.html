@@ -1,0 +1,34 @@
+{{ define "main" }}
+{{ $status := partial "status.html" . }}
+<section class="hero">
+  <div class="card">
+    <div class="kicker">Talk</div>
+    <h1 class="glitch" data-text="{{ .Title }}">{{ .Title }}</h1>
+    <div class="meta small">
+      <span class="tag">{{ $status }}</span>
+      {{ with .Params.speaker }}{{ . }} • {{ end }}{{ .Date.Format "Mon, January 2, 2006" }}
+    </div>
+
+    <div style="margin-top:14px;">
+      {{ .Content }}
+    </div>
+
+    {{ with .Params.slides }}<p><a class="btn ghost" href="{{ . }}" target="_blank" rel="noopener">Slides</a></p>{{ end }}
+    {{ with .Params.video }}<p><a class="btn ghost" href="{{ . }}" target="_blank" rel="noopener">Video</a></p>{{ end }}
+    {{ with .Params.repo }}<p><a class="btn ghost" href="{{ . }}" target="_blank" rel="noopener">Repo</a></p>{{ end }}
+
+    {{/* Add-to-calendar: per-talk .ics download + Google Calendar template link. */}}
+    {{ $d := .Date }}
+    {{ $dates := printf "%sT180000/%sT200000" ($d.Format "20060102") ($d.Format "20060102") }}
+    {{ $text := .Title }}{{ with .Params.speaker }}{{ $text = printf "%s — %s" $.Title . }}{{ end }}
+    {{ $locplain := printf "%s, %s, %s" site.Params.location.name site.Params.location.room site.Params.location.address }}
+    {{ $gcal := printf "https://calendar.google.com/calendar/render?%s" (querify "action" "TEMPLATE" "text" $text "dates" $dates "ctz" "America/Los_Angeles" "details" (.Summary | plainify | chomp) "location" $locplain) }}
+    <div style="margin-top:14px;">
+      {{ with .OutputFormats.Get "TALKEVENT" }}<a class="btn ghost" href="{{ .RelPermalink }}">Add to calendar (.ics)</a>{{ end }}
+      <a class="btn ghost" href="{{ $gcal | safeURL }}" target="_blank" rel="noopener">Add to Google Calendar</a>
+    </div>
+
+    <p style="margin-top:16px;"><a class="btn ghost" href="{{ "talks/" | relURL }}">← All talks</a></p>
+  </div>
+</section>
+{{ end }}

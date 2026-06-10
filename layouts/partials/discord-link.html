@@ -1,0 +1,24 @@
+{{- /* Renders a Discord link whose invite is obscured from scrapers.
+
+   The invite is read from the DISCORD_INVITE env var (a GitHub Actions secret
+   in CI; export it locally for `hugo server`). It is NEVER committed — this
+   repo is public. The raw URL never appears in the static HTML: it is
+   base64-encoded into a data- attribute and decoded into the href at runtime
+   by the single hydration script in baseof.html.
+
+   Params (pass via dict):
+     class       CSS classes for the element (default "btn")
+     label       link text (default "Discord")
+     fallbackURL where to link when no invite is configured; if omitted, an
+                 "ask a member" placeholder is rendered instead.
+*/ -}}
+{{- $invite := getenv "DISCORD_INVITE" -}}
+{{- $class := .class | default "btn" -}}
+{{- $label := .label | default "Discord" -}}
+{{- if $invite -}}
+<a class="{{ $class }}" data-discord="{{ $invite | base64Encode }}" href="#" target="_blank" rel="noopener">{{ $label }}</a>
+{{- else if .fallbackURL -}}
+<a class="{{ $class }}" href="{{ .fallbackURL | relURL }}">{{ $label }}</a>
+{{- else -}}
+<span class="{{ $class }}" title="Ask a member on-site to invite you" style="cursor:help;">Ask a member to join</span>
+{{- end -}}
