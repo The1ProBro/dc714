@@ -34,3 +34,15 @@ buildFuture = true
     lon = "-117.941"
     osmBbox = "-117.947,33.775,-117.935,33.784"
     osmMarker = "33.7795,-117.941"
+
+# Generated iCal feed (/meetings.ics) from data/meetings.yaml.
+[mediaTypes."text/calendar"]
+  suffixes = ["ics"]
+
+[outputFormats.ICAL]
+  mediaType = "text/calendar"
+  baseName = "meetings"
+  isPlainText = true
+
+[outputs]
+  home = ["HTML", "RSS", "ICAL"]
