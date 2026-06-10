@@ -8,9 +8,10 @@
   {{ $meetingDays = $meetingDays | append ((time.AsTime .date).Format "2006-01-02") }}
 {{ end }}
 {{ $base := time.AsTime (printf "%04d-%02d-01" $now.Year $now.Month) }}
+{{ $months := 4 }}
 
 <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px;">
-{{ range $i := seq 0 11 }}
+{{ range $i := seq 0 (sub $months 1) }}
   {{ $first := $base.AddDate 0 $i 0 }}
   {{ $lead := int (printf "%d" $first.Weekday) }}
   {{ $ndays := (($first.AddDate 0 1 0).AddDate 0 0 -1).Day }}
