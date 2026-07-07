@@ -25,7 +25,13 @@ function dc714Meetings(year){
   }
   return dates;
 }
-
+// Optional per-meeting topic, keyed by date as YYYY-MM-DD
+const meetingTopics = {
+  '2026-07-08': 'Lock Picking, Pi Building, and DEFCON Planning'
+};
+function meetingDateKey(d){
+  return `${d.getFullYear()}-${pad(d.getMonth()+1)}-${pad(d.getDate())}`;
+}
 function nextMeeting(){
   const now = new Date();
   const years = [now.getFullYear(), now.getFullYear()+1];
@@ -42,7 +48,8 @@ function populateNextMeeting(){
   el.innerHTML = `
     <div class="badge">Next Meeting</div>
     <h3 style="margin:.4rem 0 0;">${formatDate(nm)}</h3>
-    <div class="small">6:00 PM – 8:00 PM • Room 251 “Storm Center”</div>
+    ${meetingTopics[meetingDateKey(nm)] ? `<div style="font-weight:600; margin:.2rem 0;">${meetingTopics[meetingDateKey(nm)]}</div>` : ''}
+    <div class="small">6:00 PM – 8:00 PM • Room 251 "Storm Center"</div>
     <div class="small">Coastline Garden Grove Center — 12901 S. Euclid St., Garden Grove, CA</div>
     <div style="margin-top:10px;">
       <a class="btn" href="calendar.html">View Full Calendar</a>
