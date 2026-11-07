@@ -23,8 +23,22 @@ function dc714Meetings(year){
     secondWed.setHours(18,0,0,0);
     dates.push(secondWed);
   }
-  return dates;
+  // Apply one-off reschedules (see dc714Moves below), then keep the list in date order
+  return dates.map(d => {
+    const to = dc714Moves[meetingDateKey(d)];
+    if(!to) return d;
+    const p = to.split('-').map(Number);
+    return new Date(p[0], p[1]-1, p[2], 18, 0, 0, 0);
+  }).sort((a,b) => a - b);
 }
+// One-off reschedules: 'original YYYY-MM-DD': 'new YYYY-MM-DD'
+const dc714Moves = {
+  '2026-11-11': '2026-11-18'   // Veterans Day: venue closed
+};
+// Note shown on the "Next Meeting" card for a rescheduled date (keyed by the NEW date)
+const dc714MoveNotes = {
+  '2026-11-18': 'Rescheduled from Nov. 11 (Veterans Day, venue closed)'
+};
 // Optional per-meeting topic, keyed by date as YYYY-MM-DD
 const meetingTopics = {
   '2026-07-08': 'Lock Picking, Pi Building, and DEFCON Planning'
@@ -49,6 +63,7 @@ function populateNextMeeting(){
     <div class="badge">Next Meeting</div>
     <h3 style="margin:.4rem 0 0;">${formatDate(nm)}</h3>
     ${meetingTopics[meetingDateKey(nm)] ? `<div style="font-weight:600; margin:.2rem 0;">${meetingTopics[meetingDateKey(nm)]}</div>` : ''}
+    ${dc714MoveNotes[meetingDateKey(nm)] ? `<div class="small" style="color:var(--warn);">${dc714MoveNotes[meetingDateKey(nm)]}</div>` : ''}
     <div class="small">6:00 PM – 8:00 PM • Room 251 "Storm Center"</div>
     <div class="small">Coastline Garden Grove Center — 12901 S. Euclid St., Garden Grove, CA</div>
     <div style="margin-top:10px;">
@@ -72,7 +87,7 @@ function populateCalendarTable(){
       <td>${formatDate(d)}</td>
       <td>6:00 PM – 8:00 PM</td>
       <td>Room 251 “Storm Center”</td>
-      <td>${status}</td>
+      <td>${status}${dc714MoveNotes[meetingDateKey(d)] ? `<div class="small">${dc714MoveNotes[meetingDateKey(d)]}</div>` : ''}</td>
     `;
     target.appendChild(tr);
   }
@@ -93,7 +108,32 @@ function hydrateSpeakers(){
   });
 }
 
+/* Site-wide announcement banner. Hides itself automatically after `expires`. */
+const dc714Announcement = {
+  title: 'Meeting date change',
+  text: 'Our November meeting has moved from Wednesday, Nov. 11 to Wednesday, Nov. 18, 2026, because Veterans Day closes our venue. Same time (6–8 PM) and place: Room 251 “Storm Center”.',
+  expires: '2026-11-19'   // last day it is shown is the 18th; hidden from the 19th on
+};
+function renderAnnouncement(){
+  const a = dc714Announcement;
+  if(!a || !a.text) return;
+  const now = new Date();
+  const today = `${now.getFullYear()}-${pad(now.getMonth()+1)}-${pad(now.getDate())}`;
+  if(a.expires && today >= a.expires) return;
+  const main = document.querySelector('main');
+  if(!main) return;
+  const box = document.createElement('div');
+  box.className = 'notice';
+  box.setAttribute('role', 'status');
+  box.style.cssText = 'margin-top:24px; border:1px solid var(--accent-2);';
+  const t = document.createElement('strong');
+  t.textContent = a.title;
+  box.append(t, document.createElement('br'), document.createTextNode(a.text));
+  main.insertBefore(box, main.firstChild);
+}
+
 document.addEventListener('DOMContentLoaded', () => {
+  renderAnnouncement();
   populateNextMeeting();
   populateCalendarTable();
   hydrateSpeakers();
