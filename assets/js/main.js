@@ -94,10 +94,13 @@ function populateCalendarTable(){
 }
 
 function speakerStatus(dateStr){
+  // Parse YYYY-MM-DD as a LOCAL date (new Date('YYYY-MM-DD') is UTC and is off by a day in California)
+  const p = dateStr.split('-').map(Number);
+  const d = new Date(p[0], p[1]-1, p[2]);
   const now = new Date();
-  const d = new Date(dateStr);
-  if (d.toDateString() === now.toDateString()) return 'Today';
-  return d.getTime() < now.getTime() ? 'Past' : 'Upcoming';
+  const today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+  if (d.getTime() === today.getTime()) return 'Today';
+  return d.getTime() < today.getTime() ? 'Past' : 'Upcoming';
 }
 
 function hydrateSpeakers(){
@@ -108,28 +111,46 @@ function hydrateSpeakers(){
   });
 }
 
-/* Site-wide announcement banner. Hides itself automatically after `expires`. */
-const dc714Announcement = {
-  title: 'Meeting date change',
-  text: 'Our November meeting has moved from Wednesday, Nov. 11 to Wednesday, Nov. 18, 2026, because Veterans Day closes our venue. Same time (6–8 PM) and place: Room 251 “Storm Center”.',
-  expires: '2026-11-19'   // last day it is shown is the 18th; hidden from the 19th on
-};
+/* Site-wide announcement banners, shown in this order at the top of every page.
+   Each one hides itself automatically on its `expires` date. */
+const dc714Announcements = [
+  {
+    title: 'Meeting date change',
+    text: 'Our November meeting has moved from Wednesday, Nov. 11 to Wednesday, Nov. 18, 2026, because Veterans Day closes our venue. Same time (6\u20138 PM) and place: Room 251 \u201cStorm Center\u201d.',
+    expires: '2026-11-19'   // last day it is shown is the 18th; hidden from the 19th on
+  },
+  {
+    title: 'Speaker announced: Knossos',
+    text: 'Wednesday, Nov. 18: Man of Gold takes us through Knossos, a free, self-hosted pentest lab for practicing internal enumeration and lateral movement.',
+    link: { text: 'Talk details', href: 'speakers.html' },
+    expires: '2026-11-19'
+  }
+];
 function renderAnnouncement(){
-  const a = dc714Announcement;
-  if(!a || !a.text) return;
-  const now = new Date();
-  const today = `${now.getFullYear()}-${pad(now.getMonth()+1)}-${pad(now.getDate())}`;
-  if(a.expires && today >= a.expires) return;
   const main = document.querySelector('main');
   if(!main) return;
-  const box = document.createElement('div');
-  box.className = 'notice';
-  box.setAttribute('role', 'status');
-  box.style.cssText = 'margin-top:24px; border:1px solid var(--accent-2);';
-  const t = document.createElement('strong');
-  t.textContent = a.title;
-  box.append(t, document.createElement('br'), document.createTextNode(a.text));
-  main.insertBefore(box, main.firstChild);
+  const now = new Date();
+  const today = `${now.getFullYear()}-${pad(now.getMonth()+1)}-${pad(now.getDate())}`;
+  const frag = document.createDocumentFragment();
+  dc714Announcements.forEach(a => {
+    if(!a || !a.text) return;
+    if(a.expires && today >= a.expires) return;
+    const box = document.createElement('div');
+    box.className = 'notice';
+    box.setAttribute('role', 'status');
+    box.style.cssText = 'margin-top:24px; border:1px solid var(--accent-2);';
+    const t = document.createElement('strong');
+    t.textContent = a.title;
+    box.append(t, document.createElement('br'), document.createTextNode(a.text));
+    if(a.link){
+      const l = document.createElement('a');
+      l.href = a.link.href;
+      l.textContent = a.link.text;
+      box.append(document.createTextNode(' '), l);
+    }
+    frag.appendChild(box);
+  });
+  main.insertBefore(frag, main.firstChild);
 }
 
 document.addEventListener('DOMContentLoaded', () => {
